@@ -8,6 +8,7 @@ import {
   Dimensions,
   LayoutAnimation
 } from 'react-native'
+import _isEqual from 'lodash/isEqual';
 // map-related libs
 import MapView from 'react-native-maps'
 import SuperCluster from 'supercluster'
@@ -84,12 +85,14 @@ export default class ClusteredMapView extends PureComponent {
     let data
     if (region.longitudeDelta <= 80) {
       data = this.getClusters(region)
-      this.setState({ region, data }, () => {
-        this.props.onRegionChangeComplete && this.props.onRegionChangeComplete(region, data)
-      })
-    } else {
-      this.props.onRegionChangeComplete && this.props.onRegionChangeComplete(region, data)
+      if (!_isEqual(data, this.state.data)) {
+          return this.setState({ region, data }, () => {
+              this.props.onRegionChangeComplete && this.props.onRegionChangeComplete(region, data)
+          })
+      }
     }
+
+    this.props.onRegionChangeComplete && this.props.onRegionChangeComplete(region, data)
   }
 
   getClusters = (region) => {
