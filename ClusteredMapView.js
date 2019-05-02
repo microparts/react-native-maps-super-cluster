@@ -14,7 +14,7 @@ import ClusterMarker from './ClusterMarker';
 // libs / utils
 import {regionToBoundingBox, itemToGeoJSONFeature} from './util';
 
-export default class ClusteredMapView extends PureComponent {
+export default class ClusteredMapView extends Component {
     constructor(props) {
         super(props);
 
