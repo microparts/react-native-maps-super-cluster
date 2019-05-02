@@ -2,7 +2,7 @@
 
 // base libs
 import PropTypes from 'prop-types';
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import {Platform, Dimensions, LayoutAnimation} from 'react-native';
 import _isEqual from 'lodash/isEqual';
 // map-related libs
