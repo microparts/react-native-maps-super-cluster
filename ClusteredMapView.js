@@ -31,12 +31,6 @@ export default class ClusteredMapView extends Component {
         this.onRegionChangeComplete = this.onRegionChangeComplete.bind(this);
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        const nextData = this.getClusters(nextState.region);
-
-        return !_isEqual(nextData, this.state.data);
-    }
-
     componentDidMount() {
         this.clusterize(this.props.data);
     }
